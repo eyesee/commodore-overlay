@@ -1,43 +1,37 @@
-Skeleton Overlay
-================
+Commodore Overlay
+=================
 
-This is a "skeleton" overlay -- an empty overlay to use as the starting point
-for collaborating with Funtoo Linux. To start using the overlay, perform the
-following steps:
+This is my personal overlay to use for Commodore 64 development and demomaking. The overlay ebuilds are made for Funtoo Linux, but can possibly work on any other Gentoo based Linux.
 
-1. Review COPYRIGHT.txt and LICENSE.txt. What is provide are reasonable defaults,
-   using the GNU General Public License Version 2. If you are using existing ebuilds from
-   Gentoo Linux and/or Funtoo LInux, then the copyright information is probably
-   accurate. Otherwise, you will want to change the copyright notice to read:
+Usage
+-----
 
-::
+Checkout the sources to ``/var/git/overlay/commodore`` and add the file
+``/etc/portage/repos.conf/commodore`` with the following contents::
 
-  Copyright 2014 Firstname Lastname. Distributed under the terms of the GNU
-  General Public License version 2.
+  [DEFAULT]
+  main-repo = core-kit
+  
+  [commodore]
+  location = /var/git/overlay/commodore
+  auto-sync = no
+  priority = 10
 
-2. Modify ``profiles/repo_name`` and enter a single-word name for your repository.
+Doing ``ego sync`` afterwards will update your portage tree and make the ebuilds available.
 
-3. Edit ``metadata/layout.conf`` and change the word "skeleton" in the repo-name line
-   to the name of the repository.
-
-4. Modify this README.rst file to accurately reflect how to contribute. You should
-   be able to remove this top part and simply use what follows it as a template.
-
-5. Add ebuilds :)
+To remove this overlay just remove above files and folders and do ``ego sync`` again.
 
 
 =================================
 How to Contribute to this Overlay
 =================================
 
-:author: Daniel Robbins
-:contact: drobbins@funtoo.org
-:language: English
+:author: Martin Eisenbarth
+:contact: eyesee@foobarlab.net
+:languages: English, German, French
 
 Greetings GitHub Users!
 =======================
-
-.. _bugs.funtoo.org: https://bugs.funtoo.org
 
 To contribute bug reports for this overlay, you can open up a GitHub issue or send
 me a pull request.
