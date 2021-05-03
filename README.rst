@@ -38,4 +38,4 @@ me a pull request.
 
 If you are using ebuilds in this overlay as part of Funtoo Linux (because they are
 merged into the main Funtoo Linux Portage tree, for example,) then
-please also open an issue at `bugs.funtoo.org`_.
+please also open an issue at [bugs.funtoo.org].
