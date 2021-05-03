@@ -21,7 +21,6 @@ Doing ``ego sync`` afterwards will update your portage tree and make the ebuilds
 
 To remove this overlay just remove above files and folders and do ``ego sync`` again.
 
-
 =================================
 How to Contribute to this Overlay
 =================================
@@ -37,5 +36,5 @@ To contribute bug reports for this overlay, you can open up a GitHub issue or se
 me a pull request.
 
 If you are using ebuilds in this overlay as part of Funtoo Linux (because they are
-merged into the main Funtoo Linux Portage tree, for example,) then
+merged into the main Funtoo Linux Portage tree, for example) then
 please also open an issue at [bugs.funtoo.org].
