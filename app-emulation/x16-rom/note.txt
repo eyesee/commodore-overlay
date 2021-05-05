@@ -1,0 +1,2 @@
+installed in /usr/bin/rom.bin
+better install to x16-emulator install dir
