@@ -4,7 +4,6 @@
     <maintainer type="person">
         <email>eyesee@foobarlab.net</email>
     </maintainer>
-    <longdescription>UPX is a versatile executable packer with a excellent compression ratio.</longdescription>
     <use>
         <flag name="rom">Include and compile X16 ROM file</flag>
     </use>

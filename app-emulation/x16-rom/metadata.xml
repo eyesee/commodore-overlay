@@ -4,8 +4,7 @@
     <maintainer type="person">
         <email>eyesee@foobarlab.net</email>
     </maintainer>
-    <longdescription>UPX is a versatile executable packer with a excellent compression ratio.</longdescription>
     <upstream>
-        <remote-id type="github"> commanderx16/x16-emulator</remote-id>
+        <remote-id type="github"> commanderx16/x16-rom</remote-id>
     </upstream>
 </pkgmetadata>
