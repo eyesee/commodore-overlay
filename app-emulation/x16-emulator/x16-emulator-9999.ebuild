@@ -15,7 +15,9 @@ HOMEPAGE="https://github.com/commanderx16/x16-emulator"
 LICENSE="BSD-2"
 SLOT="0"
 
-RDEPEND="=app-emulation/x16-rom-${PV}"
+IUSE="+rom"
+
+RDEPEND="rom? ( =app-emulation/x16-rom-${PV} )"
 
 src_unpack() {
     if [[ ${PV} != *9999* ]]; then
@@ -27,5 +29,6 @@ src_unpack() {
 }
 
 src_install() {
+    # TODO install to separate dir? put rom file there
     dobin "${S}/x16emu"
 }

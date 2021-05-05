@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-<email>eyesee@foobarlab.net</email>
-</maintainer>
+    <maintainer type="person">
+        <email>eyesee@foobarlab.net</email>
+    </maintainer>
+    <longdescription>UPX is a versatile executable packer with a excellent compression ratio.</longdescription>
+    <use>
+        <flag name="rom">Include and compile X16 ROM file</flag>
+    </use>
+    <upstream>
+        <remote-id type="github"> commanderx16/x16-emulator</remote-id>
+    </upstream>
 </pkgmetadata>

@@ -29,5 +29,6 @@ src_unpack() {
 }
 
 src_install() {
-	dobin "${S}/build/x16/rom.bin"
+    # TODO install to x16-emulator install dir
+    dobin "${S}/build/x16/rom.bin"
 }
