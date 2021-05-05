@@ -22,6 +22,7 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~*"
 IUSE=""
+RESTRICT="test"
 
 src_unpack() {
     mkdir ${WORKDIR}/${P} || die

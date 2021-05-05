@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/commanderx16/x16-rom"
 LICENSE="x16-rom"
 SLOT="0"
 
-RESTRICT="bindist mirror"
+RESTRICT="bindist mirror test"
 
 BDEPEND="dev-embedded/cc65"
 
@@ -29,6 +29,6 @@ src_unpack() {
 }
 
 src_install() {
-    # TODO install to x16-emulator install dir
+    # TODO better install to separate x16-emulator install dir?
     dobin "${S}/build/x16/rom.bin"
 }

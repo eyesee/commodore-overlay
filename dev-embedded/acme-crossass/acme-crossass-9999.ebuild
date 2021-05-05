@@ -16,6 +16,7 @@ HOMEPAGE="https://sourceforge.net/projects/acme-crossass/"
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="doc"
+RESTRICT="test"
 
 DEPEND=""
 

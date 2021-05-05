@@ -11,6 +11,6 @@ SLOT="1"
 KEYWORDS="~*"
 IUSE=""
 
-RESTRICT="bindist mirror"
+RESTRICT="bindist mirror test"
 
 # TODO

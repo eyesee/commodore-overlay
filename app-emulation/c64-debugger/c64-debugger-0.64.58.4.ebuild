@@ -16,8 +16,8 @@ LICENSE="GPL-3+ MIT"
 SLOT="0"
 KEYWORDS="~*"
 IUSE=""
+RESTRICT="test"
 
-# TODO add 'test' use flag?
 # TODO add 'doc' use flag and download pdf manual?
 
 BDEPEND="|| ( >=app-arch/upx-3.94 >=app-arch/upx-bin-3.94 )"
