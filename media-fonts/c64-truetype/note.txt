@@ -1,0 +1,2 @@
+see: https://style64.org/projects/c64-truetype
+license: https://style64.org/c64-truetype/license
