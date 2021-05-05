@@ -17,7 +17,7 @@ LICENSE="BSD-2"
 SLOT="0"
 
 DEPEND=""
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND} =app-emulation/x16-rom-${PV}"
 BDEPEND=""
 
 src_unpack() {
@@ -36,11 +36,4 @@ src_install() {
 pkg_postinst() {
 	elog "The Commander X16 emulator requires a ROM to run. The location can"
 	elog "be specified using the -rom /path/to/rom.bin option."
-	elog
-	elog "Build instructions are available in the README of the x16-rom"
-	elog "repository. The assembler is available as dev-embedded/cc65 in this"
-	elog "overlay. If anyone can think of a good category and directory to put"
-	elog "the ROM, let me know and I'll package it so this won't be necessary."
-	elog
-	elog "https://github.com/commanderx16/x16-rom/blob/master/README.md#building-the-rom"
 }
