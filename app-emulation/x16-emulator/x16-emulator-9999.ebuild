@@ -33,12 +33,17 @@ src_unpack() {
 
 src_install() {
     # TODO install to separate dir? include rom file there?
+    # TODO install rom?
+    # TODO install sysmbols? (see binary package)
+    # TODO install docs? (see binary package)
+    # TODO install sdcard.img (see binary package)
     dobin "${S}/x16emu"
 }
 
 pkg_postinst() {
     if ! use rom ; then
-        ewarn "Commander X16 emulator installed without a ROM file."
+        ewarn "Commander X16 emulator was installed without a ROM file!"
+        ewarn "You can not run the emulator without a ROM file."
         ewarn "Please specify a location using the -rom /path/to/rom.bin option."
     fi
 }
