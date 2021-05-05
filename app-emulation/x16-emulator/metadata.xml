@@ -5,7 +5,7 @@
         <email>eyesee@foobarlab.net</email>
     </maintainer>
     <use>
-        <flag name="rom">Include and compile X16 ROM file</flag>
+        <flag name="rom">Compile required X16 ROM file</flag>
     </use>
     <upstream>
         <remote-id type="github"> commanderx16/x16-emulator</remote-id>

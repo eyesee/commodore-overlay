@@ -3,7 +3,7 @@
 EAPI=7
 
 if [[ ${PV} != *9999* ]]; then
-    SRC_URI="https://github.com/commanderx16/x16-emulator/archive/r${PV}.tar.gz  -> ${P}.tar.gz"
+    SRC_URI="https://github.com/commanderx16/x16-emulator/archive/r${PV}.tar.gz -> ${P}.tar.gz"
     KEYWORDS="~amd64"
 else
     inherit git-r3
