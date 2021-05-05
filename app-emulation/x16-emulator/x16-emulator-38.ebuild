@@ -16,7 +16,10 @@ LICENSE="BSD-2"
 SLOT="0"
 IUSE="+rom"
 RESTRICT="rom? ( bindist mirror )"
-PDEPEND="rom? ( =app-emulation/x16-rom-${PV} )"
+PDEPEND="
+    rom? ( =app-emulation/x16-rom-${PV} )
+    !rom? ( !app-emulation/x16-rom )
+"
 
 src_unpack() {
     if [[ ${PV} != *9999* ]]; then
@@ -35,8 +38,6 @@ src_install() {
 pkg_postinst() {
     if ! use rom ; then
         ewarn "Commander X16 emulator installed without a ROM file."
-        ewarn "Please specify a location using the"
-        ewarn "-rom /path/to/rom.bin"
-        ewarn "option."
+        ewarn "Please specify a location using the -rom /path/to/rom.bin option."
     fi
 }
