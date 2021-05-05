@@ -1,4 +1,3 @@
-# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,9 +15,7 @@ HOMEPAGE="https://github.com/commanderx16/x16-emulator"
 LICENSE="BSD-2"
 SLOT="0"
 
-DEPEND=""
-RDEPEND="${DEPEND} =app-emulation/x16-rom-${PV}"
-BDEPEND=""
+RDEPEND="=app-emulation/x16-rom-${PV}"
 
 src_unpack() {
 	if [[ ${PV} != *9999* ]]; then
@@ -31,9 +28,4 @@ src_unpack() {
 
 src_install() {
 	dobin "${S}/x16emu"
-}
-
-pkg_postinst() {
-	elog "The Commander X16 emulator requires a ROM to run. The location can"
-	elog "be specified using the -rom /path/to/rom.bin option."
 }

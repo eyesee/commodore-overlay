@@ -12,12 +12,11 @@ fi
 
 DESCRIPTION="ROM file for the Commander X16 Emulator"
 HOMEPAGE="https://github.com/commanderx16/x16-rom"
-LICENSE="BSD-2"
+LICENSE="x16-rom"
 SLOT="0"
-#IUSE=""
 
-DEPEND=""
-RDEPEND="${DEPEND}"
+RESTRICT="bindist mirror"
+
 BDEPEND="dev-embedded/cc65"
 
 src_unpack() {
