@@ -16,7 +16,7 @@ LICENSE="GPL-3+ MIT"
 SLOT="0"
 KEYWORDS="~*"
 IUSE=""
-RESTRICT="test"
+#RESTRICT="test"    # FIXME uncomment?
 
 # TODO add 'doc' use flag and download pdf manual?
 
