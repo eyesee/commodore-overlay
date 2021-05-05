@@ -16,6 +16,7 @@ LICENSE="BSD-2"
 SLOT="0"
 IUSE="+rom"
 RESTRICT="rom? ( bindist mirror )"
+DEPEND="media-libs/libsdl2"
 PDEPEND="
     rom? ( =app-emulation/x16-rom-${PV} )
     !rom? ( !app-emulation/x16-rom )
