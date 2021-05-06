@@ -1,0 +1,1 @@
+todo: add nice desktop stuff, like https://aur.archlinux.org/packages/vice-gnome/
