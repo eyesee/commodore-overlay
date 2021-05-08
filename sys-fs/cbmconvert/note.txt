@@ -1,0 +1,2 @@
+Sources: http://www.zimmers.net/anonftp/pub/cbm/crossplatform/converters/unix/index.html
+Homepage: http://www.zimmers.net/anonftp/pub/cbm/crossplatform/converters/unix/cbmconvert.html

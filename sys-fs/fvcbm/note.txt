@@ -1,0 +1,2 @@
+Sources: http://www.zimmers.net/anonftp/pub/cbm/crossplatform/converters/unix/index.html
+Readme: http://www.zimmers.net/anonftp/pub/cbm/crossplatform/converters/unix/fvcbm30.readme
