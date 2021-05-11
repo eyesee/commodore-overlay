@@ -10,7 +10,17 @@ LICENSE="exomizer"
 SLOT="3/3.0"
 KEYWORDS="~*"
 IUSE=""
+RESTRICT="bindist mirror test"
+BDEPEND="app-arch/unzip"
+QA_PRESTRIPPED="/usr/bin/exomizer /usr/bin/exobasic"
 
-RESTRICT="bindist mirror"
+S="$WORKDIR"/src
 
-# TODO
+src_install() {
+    dobin exomizer exobasic
+    local d
+    for d in changelog.txt exo20info.txt exo30info.txt exobasic10b2.txt; do
+        [[ -s "${WORKDIR}/${d}" ]] && dodoc "${WORKDIR}/${d}"
+    done
+    # TODO copy examples
+}
