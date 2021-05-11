@@ -11,4 +11,6 @@ KEYWORDS="~amd64"
 RESTRICT="bindist mirror test"
 IUSE="doc"
 
+BDEPEND="app-arch/unzip"
+
 # TODO
