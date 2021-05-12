@@ -3,13 +3,13 @@
 EAPI=7
 
 if [[ ${PV} == "9999" ]]; then
-    ESVN_REPO_URI="https://svn.code.sf.net/p/acme-crossass/code-0/trunk"
+    ESVN_REPO_URI="https://svn.code.sf.net/p/acme-crossass/code-0/trunk/"
     ESVN_PROJECT="${PN}-svn"
     ESVN_OPTIONS=""
     inherit subversion
 else
     # TODO checkout specific revision for given version (e.g. 0.97 = r319)
-    ESVN_REPO_URI="https://svn.code.sf.net/p/acme-crossass/code-0/trunk"
+    ESVN_REPO_URI="https://svn.code.sf.net/p/acme-crossass/code-0/trunk/"
     
     # for 0.97-r319:
     ESVN_PROJECT="${PN}-r319"
