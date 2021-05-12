@@ -35,3 +35,5 @@ DEPEND=""
 #src_prepare() {
 #    default
 #}
+
+# TODO subversion.eclass bug reported as https://bugs.funtoo.org/browse/FL-8367
