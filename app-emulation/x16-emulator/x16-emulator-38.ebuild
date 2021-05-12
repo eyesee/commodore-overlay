@@ -32,9 +32,7 @@ src_unpack() {
 }
 
 src_install() {
-    # TODO install to separate dir? include rom file there?
-    # TODO install rom?
-    # TODO install sysmbols? (see binary package)
+    # TODO install symbols? (see binary package)
     # TODO install docs? (see binary package)
     # TODO install sdcard.img (see binary package)
     dobin "${S}/x16emu"
