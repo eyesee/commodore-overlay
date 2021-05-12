@@ -7,7 +7,7 @@ HOMEPAGE="https://bitbucket.org/magli143/exomizer/wiki/Home"
 SRC_URI="https://bitbucket.org/magli143/exomizer/wiki/downloads/${P}.zip"
 
 LICENSE="exomizer"
-SLOT="3/3.1"
+SLOT="0"
 KEYWORDS="~*"
 IUSE=""
 RESTRICT="bindist mirror test"
