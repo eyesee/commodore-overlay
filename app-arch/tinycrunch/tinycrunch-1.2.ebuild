@@ -9,6 +9,7 @@ LICENSE=""
 SLOT="0"
 KEYWORDS="~*"
 IUSE=""
+RESTRICT="test"
 
 # TODO:
 
