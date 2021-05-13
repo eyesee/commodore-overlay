@@ -17,5 +17,6 @@ case "${EAPI:-0}" in
         ;;
 esac
 
+# TODO make use of webservice (https://csdb.dk/webservice/)
 # TODO function to download a release (optional: all files)
 # TODO function to filter releases
