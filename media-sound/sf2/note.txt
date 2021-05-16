@@ -1,0 +1,2 @@
+Homepage: https://blog.chordian.net/sf2/
+Sources: https://github.com/Chordian/sidfactory2

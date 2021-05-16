@@ -1,2 +1,3 @@
 Homepage: https://sourceforge.net/projects/goattracker2/
 Sources: SVN https://svn.code.sf.net/p/goattracker2/code/ goattracker2-code
+see: https://csdb.dk/release/?id=204227
