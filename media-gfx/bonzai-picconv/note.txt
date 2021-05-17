@@ -2,4 +2,5 @@ Homepage: https://www.facebook.com/groups/347360932494631
 CSDB: https://csdb.dk/release/?id=172436
 Download: http://csdb.dk/getinternalfile.php/176084/BZ-PictureConverter4.zip
 
-TODO port to fpc/lazarus 
+TODO port to fpc/lazarus?
+TODO run in wine?
