@@ -133,7 +133,7 @@ ESVN_BOOTSTRAP="${ESVN_BOOTSTRAP:-}"
 
 # @ECLASS-VARIABLE: ESVN_PATCHES
 # @DESCRIPTION:
-# subversion eclass can apply patches in subversion_bootstrap().
+# subversion eclass can apply patches in subversion-gentoo_bootstrap().
 # you can use regexp in this variable like *.diff or *.patch or etc.
 # NOTE: patches will be applied before ESVN_BOOTSTRAP is processed.
 #
@@ -188,7 +188,7 @@ ESVN_UP_FREQ="${ESVN_UP_FREQ:=}"
 # set by ebuilds/eclasses. It defaults to empty so users need to opt in.
 ESCM_LOGDIR="${ESCM_LOGDIR:=}"
 
-# @FUNCTION: subversion_fetch
+# @FUNCTION: subversion-gentoo_fetch
 # @USAGE: [repo_uri] [destination]
 # @DESCRIPTION:
 # Wrapper function to fetch sources from subversion via svn checkout or svn update,
@@ -197,9 +197,9 @@ ESCM_LOGDIR="${ESCM_LOGDIR:=}"
 # Can take two optional parameters:
 #   repo_uri    - a repository URI. default is ESVN_REPO_URI.
 #   destination - a check out path in S.
-subversion_fetch() {
-	local repo_uri="$(subversion__get_repository_uri "${1:-${ESVN_REPO_URI}}")"
-	local revision="$(subversion__get_peg_revision "${1:-${ESVN_REPO_URI}}")"
+subversion-gentoo_fetch() {
+	local repo_uri="$(subversion-gentoo__get_repository_uri "${1:-${ESVN_REPO_URI}}")"
+	local revision="$(subversion-gentoo__get_peg_revision "${1:-${ESVN_REPO_URI}}")"
 	local S_dest="${2}"
 
 	if [[ -z ${repo_uri} ]]; then
@@ -236,7 +236,7 @@ subversion_fetch() {
 
 	pushd "${ESVN_STORE_DIR}" >/dev/null || die "${ESVN}: can't chdir to ${ESVN_STORE_DIR}"
 
-	local wc_path="$(subversion__get_wc_path "${repo_uri}")"
+	local wc_path="$(subversion-gentoo__get_wc_path "${repo_uri}")"
 	local options="${ESVN_OPTIONS} --config-dir ${ESVN_STORE_DIR}/.subversion"
 
 	[[ -n "${revision}" ]] && options="${options} -r ${revision}"
@@ -275,7 +275,7 @@ subversion_fetch() {
 	elif [[ -n ${ESVN_OFFLINE} ]]; then
 		svn upgrade "${wc_path}" &>/dev/null
 		svn cleanup "${wc_path}" &>/dev/null
-		subversion_wc_info "${repo_uri}" || die "${ESVN}: unknown problem occurred while accessing working copy."
+		subversion-gentoo_wc_info "${repo_uri}" || die "${ESVN}: unknown problem occurred while accessing working copy."
 
 		if [[ -n ${ESVN_REVISION} && ${ESVN_REVISION} != ${ESVN_WC_REVISION} ]]; then
 			die "${ESVN}: You requested off-line updating and revision ${ESVN_REVISION} but only revision ${ESVN_WC_REVISION} is available locally."
@@ -284,7 +284,7 @@ subversion_fetch() {
 	else
 		svn upgrade "${wc_path}" &>/dev/null
 		svn cleanup "${wc_path}" &>/dev/null
-		subversion_wc_info "${repo_uri}" || die "${ESVN}: unknown problem occurred while accessing working copy."
+		subversion-gentoo_wc_info "${repo_uri}" || die "${ESVN}: unknown problem occurred while accessing working copy."
 
 		local esvn_up_freq=
 		if [[ -n ${ESVN_UP_FREQ} ]]; then
@@ -298,11 +298,11 @@ subversion_fetch() {
 		fi
 
 		if [[ -z ${esvn_up_freq} ]]; then
-			if [[ ${ESVN_WC_UUID} != $(subversion__svn_info "${repo_uri}" "Repository UUID") ]]; then
+			if [[ ${ESVN_WC_UUID} != $(subversion-gentoo__svn_info "${repo_uri}" "Repository UUID") ]]; then
 				# UUID mismatch. Delete working copy and check out it again.
 				einfo "subversion recheck out start -->"
 				einfo "     old UUID: ${ESVN_WC_UUID}"
-				einfo "     new UUID: $(subversion__svn_info "${repo_uri}" "Repository UUID")"
+				einfo "     new UUID: $(subversion-gentoo__svn_info "${repo_uri}" "Repository UUID")"
 				einfo "     repository: ${repo_uri}${revision:+@}${revision}"
 
 				rm -fr "${ESVN_PROJECT}" || die
@@ -316,7 +316,7 @@ subversion_fetch() {
 				else
 					${ESVN_FETCH_CMD} ${options} "${repo_uri}" || die "${ESVN}: can't fetch to ${wc_path} from ${repo_uri}."
 				fi
-			elif [[ ${ESVN_WC_URL} != $(subversion__get_repository_uri "${repo_uri}") ]]; then
+			elif [[ ${ESVN_WC_URL} != $(subversion-gentoo__get_repository_uri "${repo_uri}") ]]; then
 				einfo "subversion switch start -->"
 				einfo "     old repository: ${ESVN_WC_URL}@${ESVN_WC_REVISION}"
 				einfo "     new repository: ${repo_uri}${revision:+@}${revision}"
@@ -345,7 +345,7 @@ subversion_fetch() {
 			fi
 
 			# export updated information for the working copy
-			subversion_wc_info "${repo_uri}" || die "${ESVN}: unknown problem occurred while accessing working copy."
+			subversion-gentoo_wc_info "${repo_uri}" || die "${ESVN}: unknown problem occurred while accessing working copy."
 		fi
 	fi
 
@@ -371,11 +371,11 @@ subversion_fetch() {
 	echo
 }
 
-# @FUNCTION: subversion_bootstrap
+# @FUNCTION: subversion-gentoo_bootstrap
 # @DESCRIPTION:
 # Apply patches in ${ESVN_PATCHES} and run ${ESVN_BOOTSTRAP} if specified.
 # Removed in EAPI 6 and later.
-subversion_bootstrap() {
+subversion-gentoo_bootstrap() {
 	[[ ${EAPI} == [012345] ]] || die "${FUNCNAME} is removed from subversion.eclass in EAPI 6 and later"
 
 	if has "export" ${ESVN_RESTRICT}; then
@@ -415,7 +415,7 @@ subversion_bootstrap() {
 	fi
 }
 
-# @FUNCTION: subversion_wc_info
+# @FUNCTION: subversion-gentoo_wc_info
 # @USAGE: [repo_uri]
 # @RETURN: ESVN_WC_URL, ESVN_WC_ROOT, ESVN_WC_UUID, ESVN_WC_REVISION and ESVN_WC_PATH
 # @DESCRIPTION:
@@ -423,9 +423,9 @@ subversion_bootstrap() {
 #
 # The working copy information on the specified repository URI are set to
 # ESVN_WC_* variables.
-subversion_wc_info() {
-	local repo_uri="$(subversion__get_repository_uri "${1:-${ESVN_REPO_URI}}")"
-	local wc_path="$(subversion__get_wc_path "${repo_uri}")"
+subversion-gentoo_wc_info() {
+	local repo_uri="$(subversion-gentoo__get_repository_uri "${1:-${ESVN_REPO_URI}}")"
+	local wc_path="$(subversion-gentoo__get_wc_path "${repo_uri}")"
 
 	debug-print "${FUNCNAME}: repo_uri = ${repo_uri}"
 	debug-print "${FUNCNAME}: wc_path = ${wc_path}"
@@ -434,36 +434,36 @@ subversion_wc_info() {
 		return 1
 	fi
 
-	export ESVN_WC_URL="$(subversion__svn_info "${wc_path}" "URL")"
-	export ESVN_WC_ROOT="$(subversion__svn_info "${wc_path}" "Repository Root")"
-	export ESVN_WC_UUID="$(subversion__svn_info "${wc_path}" "Repository UUID")"
-	export ESVN_WC_REVISION="$(subversion__svn_info "${wc_path}" "Revision")"
+	export ESVN_WC_URL="$(subversion-gentoo__svn_info "${wc_path}" "URL")"
+	export ESVN_WC_ROOT="$(subversion-gentoo__svn_info "${wc_path}" "Repository Root")"
+	export ESVN_WC_UUID="$(subversion-gentoo__svn_info "${wc_path}" "Repository UUID")"
+	export ESVN_WC_REVISION="$(subversion-gentoo__svn_info "${wc_path}" "Revision")"
 	export ESVN_WC_PATH="${wc_path}"
 }
 
-# @FUNCTION: subversion_src_unpack
+# @FUNCTION: subversion-gentoo_src_unpack
 # @DESCRIPTION:
 # Default src_unpack. Fetch.
-subversion_src_unpack() {
-	subversion_fetch || die "${ESVN}: unknown problem occurred in subversion_fetch."
+subversion-gentoo_src_unpack() {
+	subversion-gentoo_fetch || die "${ESVN}: unknown problem occurred in subversion-gentoo_fetch."
 }
 
-# @FUNCTION: subversion_src_prepare
+# @FUNCTION: subversion-gentoo_src_prepare
 # @DESCRIPTION:
 # Default src_prepare. Bootstrap.
 # Removed in EAPI 6 and later.
-subversion_src_prepare() {
+subversion-gentoo_src_prepare() {
 	[[ ${EAPI} == [012345] ]] || die "${FUNCNAME} is removed from subversion.eclass in EAPI 6 and later"
-	subversion_bootstrap || die "${ESVN}: unknown problem occurred in subversion_bootstrap."
+	subversion-gentoo_bootstrap || die "${ESVN}: unknown problem occurred in subversion-gentoo_bootstrap."
 }
 
-# @FUNCTION: subversion_pkg_preinst
+# @FUNCTION: subversion-gentoo_pkg_preinst
 # @USAGE: [repo_uri]
 # @DESCRIPTION:
 # Log the svn revision of source code. Doing this in pkg_preinst because we
 # want the logs to stick around if packages are uninstalled without messing with
 # config protection.
-subversion_pkg_preinst() {
+subversion-gentoo_pkg_preinst() {
 	local pkgdate=$(date "+%Y%m%d %H:%M:%S")
 	if [[ -n ${ESCM_LOGDIR} ]]; then
 		local dir="${EROOT%/}${ESCM_LOGDIR}/${CATEGORY}"
@@ -481,12 +481,12 @@ subversion_pkg_preinst() {
 
 ## -- Private Functions
 
-## -- subversion__svn_info() ------------------------------------------------- #
+## -- subversion-gentoo__svn_info() ------------------------------------------------- #
 #
 # param $1 - a target.
 # param $2 - a key name.
 #
-subversion__svn_info() {
+subversion-gentoo__svn_info() {
 	local target="${1}"
 	local key="${2}"
 
@@ -495,10 +495,10 @@ subversion__svn_info() {
 		| cut -d" " -f2-
 }
 
-## -- subversion__get_repository_uri() --------------------------------------- #
+## -- subversion-gentoo__get_repository_uri() --------------------------------------- #
 #
 # param $1 - a repository URI.
-subversion__get_repository_uri() {
+subversion-gentoo__get_repository_uri() {
 	local repo_uri="${1}"
 
 	debug-print "${FUNCNAME}: repo_uri = ${repo_uri}"
@@ -514,21 +514,21 @@ subversion__get_repository_uri() {
 	echo "${repo_uri}"
 }
 
-## -- subversion__get_wc_path() ---------------------------------------------- #
+## -- subversion-gentoo__get_wc_path() ---------------------------------------------- #
 #
 # param $1 - a repository URI.
-subversion__get_wc_path() {
-	local repo_uri="$(subversion__get_repository_uri "${1}")"
+subversion-gentoo__get_wc_path() {
+	local repo_uri="$(subversion-gentoo__get_repository_uri "${1}")"
 
 	debug-print "${FUNCNAME}: repo_uri = ${repo_uri}"
 
 	echo "${ESVN_STORE_DIR}/${ESVN_PROJECT}/${repo_uri##*/}"
 }
 
-## -- subversion__get_peg_revision() ----------------------------------------- #
+## -- subversion-gentoo__get_peg_revision() ----------------------------------------- #
 #
 # param $1 - a repository URI.
-subversion__get_peg_revision() {
+subversion-gentoo__get_peg_revision() {
 	local repo_uri="${1}"
 	local peg_rev=
 
