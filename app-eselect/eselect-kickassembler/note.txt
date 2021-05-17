@@ -1,1 +1,2 @@
 # TODO allow switching versions
+# see: https://wiki.gentoo.org/wiki/Project:Eselect
