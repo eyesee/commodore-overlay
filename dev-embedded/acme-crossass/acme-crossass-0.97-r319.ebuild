@@ -6,7 +6,7 @@ if [[ ${PV} == "9999" ]]; then
     ESVN_REPO_URI="https://svn.code.sf.net/p/acme-crossass/code-0/trunk/"
     ESVN_PROJECT="${PN}-svn"
     ESVN_OPTIONS=""
-    inherit subversion
+    inherit subversion-gentoo
 else
     # TODO checkout specific revision for given version (e.g. 0.97 = r319)
     ESVN_REPO_URI="https://svn.code.sf.net/p/acme-crossass/code-0/trunk/"
@@ -15,7 +15,7 @@ else
     ESVN_PROJECT="${PN}-r319"
     ESVN_REVISION="319"
     
-    inherit subversion
+    inherit subversion-gentoo
     
     # TODO alternative download from sourceforge as snapshot: e.g. acme-crossass-code-0-r319-trunk.zip
     # from: https://sourceforge.net/code-snapshots/svn/a/ac/acme-crossass/code-0/acme-crossass-code-0-r319-trunk.zip
