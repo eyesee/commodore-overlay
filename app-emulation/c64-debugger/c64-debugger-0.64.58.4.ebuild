@@ -2,7 +2,7 @@
 
 EAPI=7
 
-inherit git-r3
+inherit git-r3 desktop
 
 EGIT_REPO_URI="https://git.code.sf.net/p/c64-debugger/code" 
 EGIT_COMMIT="6d14ae7a5b80435d3fe778af829e6c045d2b72dc"
@@ -44,7 +44,9 @@ src_compile() {
 }
 
 src_install() {
-    dobin "${S}/MTEngine/c64debugger"
+    dobin MTEngine/c64debugger
     dodoc README-SOURCES.txt LICENSE.txt
+    newicon "MTEngine/Assets/icons C64 Debugger/AppIcon C64.appiconset/icon128.png" c64debugger.png
+    domenu ${FILESDIR}/c64debugger.desktop
     # TODO install examples?
 }
