@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="person">
+        <email>eyesee@foobarlab.net</email>
+    </maintainer>
+    <longdescription>
+        64TASS is a multi pass optimizing macro assembler for the 65xx series
+        of processors.
+    </longdescription>
+</pkgmetadata>
